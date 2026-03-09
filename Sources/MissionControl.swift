@@ -25,6 +25,7 @@
 import Foundation
 
 /// Facade class for using MissionControl.
+@MainActor
 public class MissionControl {
     
     // MARK: - Types

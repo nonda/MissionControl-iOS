@@ -38,6 +38,7 @@ import Foundation
 
     - returns: Resolved setting of generic type `T` for given key.
 */
+@MainActor
 public func ConfigGeneric<T>(_ key: String, fallback: T) -> T {
     if let remoteValue = ACMissionControl.shared.remoteConfig?[key] as? T {
         return remoteValue
@@ -63,6 +64,7 @@ public func ConfigGeneric<T>(_ key: String, fallback: T) -> T {
     - parameter key: Key for the setting.
     - parameter fallback: Fallback value of generic type `T` if refresh is not successful.
 */
+@MainActor
 public func ConfigGenericForce<T>(_ key: String, fallback: T, completion: @escaping ((_ forced: T) -> Void)) {
     MissionControl.refresh({ (innerBlock) in
         do {
@@ -83,6 +85,7 @@ public func ConfigGenericForce<T>(_ key: String, fallback: T, completion: @escap
 
     - returns: Resolved setting of type `Bool` for given key.
 */
+@MainActor
 public func ConfigBool(_ key: String, fallback: Bool = Bool()) -> Bool {
     return ConfigGeneric(key, fallback: fallback)
 }
@@ -94,6 +97,7 @@ public func ConfigBool(_ key: String, fallback: Bool = Bool()) -> Bool {
     - parameter key: Key for the setting.
     - parameter fallback: Fallback value if refresh was not successful.
 */
+@MainActor
 public func ConfigBoolForce(_ key: String, fallback: Bool, completion: @escaping ((_ forced: Bool) -> Void)) {
     ConfigGenericForce(key, fallback: fallback, completion: completion)
 }
@@ -107,6 +111,7 @@ public func ConfigBoolForce(_ key: String, fallback: Bool, completion: @escaping
 
     - returns: Resolved setting of type `Int` for given key.
 */
+@MainActor
 public func ConfigInt(_ key: String, fallback: Int = Int()) -> Int {
     return ConfigGeneric(key, fallback: fallback)
 }
@@ -118,6 +123,7 @@ public func ConfigInt(_ key: String, fallback: Int = Int()) -> Int {
     - parameter key: Key for the setting.
     - parameter fallback: Fallback value if refresh was not successful.
 */
+@MainActor
 public func ConfigIntForce(_ key: String, fallback: Int, completion: @escaping ((_ forced: Int) -> Void)) {
     ConfigGenericForce(key, fallback: fallback, completion: completion)
 }
@@ -131,6 +137,7 @@ public func ConfigIntForce(_ key: String, fallback: Int, completion: @escaping (
 
     - returns: Resolved setting of type `Double` for given key.
 */
+@MainActor
 public func ConfigDouble(_ key: String, fallback: Double = Double()) -> Double {
     return ConfigGeneric(key, fallback: fallback)
 }
@@ -142,6 +149,7 @@ public func ConfigDouble(_ key: String, fallback: Double = Double()) -> Double {
     - parameter key: Key for the setting.
     - parameter fallback: Fallback value if refresh was not successful.
 */
+@MainActor
 public func ConfigDoubleForce(_ key: String, fallback: Double, completion: @escaping ((_ forced: Double) -> Void)) {
     ConfigGenericForce(key, fallback: fallback, completion: completion)
 }
@@ -155,6 +163,7 @@ public func ConfigDoubleForce(_ key: String, fallback: Double, completion: @esca
 
     - returns: Resolved setting of type `String` for given key.
 */
+@MainActor
 public func ConfigString(_ key: String, fallback: String = String()) -> String {
     return ConfigGeneric(key, fallback: fallback)
 }
@@ -166,6 +175,7 @@ public func ConfigString(_ key: String, fallback: String = String()) -> String {
     - parameter key: Key for the setting.
     - parameter fallback: Fallback value if refresh was not successful.
 */
+@MainActor
 public func ConfigStringForce(_ key: String, fallback: String, completion: @escaping ((_ forced: String) -> Void)) {
     ConfigGenericForce(key, fallback: fallback, completion: completion)
 }

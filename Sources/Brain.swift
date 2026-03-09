@@ -30,11 +30,12 @@ public typealias ThrowWithInnerBlock = (() throws -> Void) -> Void
 /// Block which throws dictionary via inner block.
 public typealias ThrowJSONWithInnerBlock = (_ block: @escaping () throws -> [String : AnyObject]) -> Void
 
+@MainActor
 class ACMissionControl {
     
     // MARK: - Singleton
     
-    nonisolated(unsafe) static let shared = ACMissionControl()
+    static let shared = ACMissionControl()
     
     // MARK: - Properties
     
