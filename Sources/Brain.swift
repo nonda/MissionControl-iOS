@@ -34,7 +34,7 @@ class ACMissionControl {
     
     // MARK: - Singleton
     
-    static let shared = ACMissionControl()
+    nonisolated(unsafe) static let shared = ACMissionControl()
     
     // MARK: - Properties
     
